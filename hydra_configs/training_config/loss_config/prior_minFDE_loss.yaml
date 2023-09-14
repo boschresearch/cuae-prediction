@@ -1,0 +1,16 @@
+prior_minFDE_loss:
+  loss_function:
+    path_to_class: learning.loss.DualMultimodalityAdapter
+    config:
+      label_names:
+      - future_waypoints
+      output_names:
+      - multimodal_vae_prior_future_waypoints
+      loss_func_config:
+        path_to_class: learning.loss.MinFDELoss
+        config:
+          order: 2
+          output_label_key: future_waypoints
+          output_key: multimodal_vae_prior_future_waypoints
+  name: prior_minFDE_loss
+  weight: 1

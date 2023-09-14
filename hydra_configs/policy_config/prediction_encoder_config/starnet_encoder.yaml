@@ -1,0 +1,21 @@
+config:
+  waypoints_encoder_config:
+    config:
+      scales:
+        - 2
+        - 1.9
+      feat_dim: 128
+      num_input_channels: 3
+    path_to_class: learning.prediction_models.encoders.TempCNNEncoder
+  graph_edge_config:
+    self_loop: false
+    bidirect: true
+  gat_layers_config:
+    - {gat_conv_path: torch_geometric.nn.GATConv, in_channels: 128, out_channels: 8, heads: 8, concatenate: true, activation: torch.nn.ELU, norm: torch.nn.LayerNorm}
+    - {gat_conv_path: torch_geometric.nn.GATConv, in_channels: 64, out_channels: 128, heads: 1, concatenate: false, activation: torch.nn.ELU, norm: torch.nn.LayerNorm}
+  gat_aggregator_config:
+      operator: scatter_max
+  mha_aggregator_config:
+      - {feat_dim: 128, num_heads: 8, norm: torch.nn.LayerNorm, lin_layers: []}
+  output_dim: 128
+path_to_class: learning.prediction_models.encoders.StarGraphContextEncoder

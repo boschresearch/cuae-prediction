@@ -1,0 +1,9 @@
+path_to_class: lib.data_handling.DatasetGenerationAdditionalConfig
+config:
+  rollouts_path_in: ???
+  dataset_path_out: ???
+  data_source: interaction
+  split: from_rollout_subfolders
+  rollout_stride: 1
+  num_splits: 1
+  num_workers: 1

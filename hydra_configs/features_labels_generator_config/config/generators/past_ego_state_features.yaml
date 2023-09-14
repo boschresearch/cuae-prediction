@@ -1,0 +1,7 @@
+past_ego_state_features:
+  path_to_class: features_and_labels.features_generators.PastEgoStateFeaturesGenerator
+  config:
+    num_frames: 1
+    stride: 1
+    reference_frame_idx: -1
+    output_name: ego_state_features

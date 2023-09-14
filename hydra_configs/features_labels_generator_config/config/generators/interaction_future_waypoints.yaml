@@ -1,0 +1,7 @@
+interaction_future_waypoints:
+  path_to_class: features_and_labels.labels_generators.FutureWaypointsLabelsGenerator
+  config:
+    additional_parameters:
+      num_frames: 30
+      stride: 1
+    output_name: future_waypoints

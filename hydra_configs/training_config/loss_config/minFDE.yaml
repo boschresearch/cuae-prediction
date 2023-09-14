@@ -1,0 +1,8 @@
+minFDE:
+  loss_function:
+    path_to_class: learning.loss.MinFDELoss
+    config:
+      output_label_key: future_waypoints
+      output_key: multimodal_future_waypoints
+      order: 2
+  name: minFDE

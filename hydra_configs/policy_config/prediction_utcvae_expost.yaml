@@ -1,0 +1,78 @@
+path_to_class: learning.prediction_models.action_space_models.feed_forward_models.ExPostCVAEActionSpacePredictor
+path_to_state_dict: null
+config:
+  base_model_name: ${cvae_base_model}
+  output_samples_handling:
+    method: averaging_with_clustering
+    path_to_clustering_func: learning.clustering_utils.kmeans_clustering
+    num_clusters: 6
+  data_source: INFER FROM TRAINING WRAPPER
+  inputs: INFER FROM TRAINING WRAPPER
+  inputs_sample_times: INFER FROM TRAINING WRAPPER
+  latent_sampling:
+    method: unscented
+    heuristic: mean_random_pairs
+  latent_z_dim: 32
+  num_modes: 1
+  num_z_samples: 65
+  inference_method: cond_expost
+  num_mixture_components: 50
+  outputs: INFER FROM TRAINING WRAPPER
+  outputs_sample_times: INFER FROM TRAINING WRAPPER
+  submodel_configs:
+    actions_encoder:
+      config:
+        feat_dim: 128
+        num_input_channels: 2
+        scales:
+          - 1.9
+          - 1.9
+      path_to_class: learning.prediction_models.encoders.TempCNNEncoder
+    actions_predictor:
+      config:
+        gru_params:
+          hidden_dim: 256
+          input_dim: 256
+          num_layers: 2
+          num_loops: 3
+        input_lin_layers:
+        - activation: torch.nn.Tanh
+          dim: 512
+          norm: torch.nn.BatchNorm1d
+        - activation: torch.nn.Tanh
+          dim: 256
+          norm: torch.nn.BatchNorm1d
+      path_to_class: learning.prediction_models.heads.RegularizableGRUActionHead
+    context_encoder: ${policy_config.prediction_encoder_config}
+    gt_encoder:
+      config:
+        scales:
+          - 1.95
+          - 1.875
+        feat_dim: 128
+        num_input_channels: 2
+      path_to_class: learning.prediction_models.encoders.TempCNNEncoder
+    kinematic_model:
+      config: {}
+      path_to_class: lib.kinematic_models.KinematicBicycleModel
+    posterior_predictor:
+      config:
+        hidden_layer_dims:
+          - dim: 128
+            norm: torch.nn.BatchNorm1d
+            activation: torch.nn.ReLU
+          - dim: 128
+            norm: torch.nn.BatchNorm1d
+            activation: torch.nn.ReLU
+      path_to_class: learning.prediction_models.heads.NormalDistributionMLP
+    prior_predictor:
+      config:
+        hidden_layer_dims:
+          - dim: 128
+            norm: torch.nn.BatchNorm1d
+            activation: torch.nn.ReLU
+          - dim: 128
+            norm: torch.nn.BatchNorm1d
+            activation: torch.nn.ReLU
+      path_to_class: learning.prediction_models.heads.NormalDistributionMLP
+  zero_correlation: true

@@ -1,0 +1,7 @@
+interaction_past_actions_features:
+  path_to_class: features_and_labels.features_generators.PastActionsFeaturesGenerator
+  config:
+    num_frames: 10
+    stride: 1
+    data_frequency: 10.0
+    output_name: past_actions_features

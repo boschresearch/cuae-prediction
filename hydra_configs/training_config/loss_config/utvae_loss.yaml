@@ -1,0 +1,32 @@
+utvae_loss:
+  loss_function:
+    path_to_class: learning.loss.VAELoss
+    config:
+      label_names:
+      - future_waypoints
+      output_names:
+      - multimodal_vae_posterior_future_waypoints
+      - multimodal_vae_posterior_future_waypoints_std
+      - posterior_mu
+      - posterior_tril
+      - prior_mu
+      - prior_tril
+      reconstruction_loss_func_config:
+        path_to_class: learning.loss.NLLTrajectorywise
+        config:
+          output_mean_key: multimodal_vae_posterior_future_waypoints
+          output_std_key: multimodal_vae_posterior_future_waypoints_std
+          label_key: future_waypoints
+          normal_dist_std: regressed_std
+      posterior_prior_loss_func_config:
+        path_to_class: learning.loss.KLDLoss
+        config:
+          posterior_mu_key: posterior_mu
+          posterior_cov_key: posterior_tril
+          prior_mu_key: prior_mu
+          prior_cov_key: prior_tril
+      reduce_sample_multimodality: wta
+      reduce_decoder_multimodality: wta
+      beta: 0.001
+  name: utvae_loss
+  weight: 1

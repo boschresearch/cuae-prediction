@@ -1,0 +1,17 @@
+help_string: |-
+ Generate a dataset from rollouts.
+
+ Required overrides:
+ - dataset_config.config.rollouts_path_in
+   Path to the directory containing the rollouts.
+ - dataset_config.config.dataset_path_out
+   Path to the directory where the dataset will be stored.
+
+ Suggested overrides:
+ - dataset_config.config.num_splits = ${dataset_config.config.num_splits}
+   Number of parts in which the dataset will be split.
+   This results in num-splits hdf5 files, each containing 1/num-splits part of the dataset.
+ - dataset_config.config.num_workers = ${dataset_config.config.num_workers}
+   Number of workers to generate the dataset. Each worker will generate a split of the dataset.
+ - features_labels_generator_config
+   Specify the required generators for your model and losses.

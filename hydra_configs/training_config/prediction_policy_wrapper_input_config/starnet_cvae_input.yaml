@@ -1,0 +1,22 @@
+inputs:
+  - info: INFER
+    key: future_actions_features
+    name: future_actions_features_input
+  - info: INFER
+    key: past_polyline_features
+    name: past_polyline_features_input
+  - info: INFER
+    key: past_actions_features
+    name: past_actions_features_input
+  - info: INFER
+    key: ego_state_features
+    name: current_ego_state_features_input
+  - info: INFER
+    key: past_waypoints
+    name: past_ego_waypoints_features_input
+  - info: INFER
+    key: past_traffic_poses
+    name: past_traffic_poses_features_input
+  - info: INFER
+    key: future_waypoints
+    name: future_waypoints_features_input

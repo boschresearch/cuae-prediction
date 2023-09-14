@@ -1,0 +1,21 @@
+wta_NLL_at1s:
+  loss_function:
+    path_to_class: learning.loss.VAEReconstructionLoss
+    config:
+      label_names:
+      - future_waypoints
+      output_names:
+      - multimodal_vae_prior_future_waypoints
+      - multimodal_vae_prior_future_waypoints_std
+      reconstruction_loss_func_config:
+        path_to_class: learning.loss.NLLAtTimestep
+        config:
+          output_mean_key: multimodal_vae_prior_future_waypoints
+          output_std_key: multimodal_vae_prior_future_waypoints_std
+          label_key: future_waypoints
+          ratio: 0.33
+          normal_dist_std: regressed_std
+      reduce_sample_multimodality: wta
+      reduce_decoder_multimodality: wta
+  name: wta_NLL_at1s
+  weight: 1

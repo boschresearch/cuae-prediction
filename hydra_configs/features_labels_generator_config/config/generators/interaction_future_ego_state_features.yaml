@@ -1,0 +1,7 @@
+interaction_future_ego_state_features:
+  path_to_class: features_and_labels.features_generators.FutureEgoStateFeaturesGenerator
+  config:
+    num_frames: 30
+    stride: 1
+    reference_frame_idx: 0
+    output_name: future_ego_state_features

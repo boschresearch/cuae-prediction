@@ -1,0 +1,21 @@
+vae_loss_gmm_covar_prior:
+  loss_function:
+    path_to_class: learning.loss.VAECovarLoss
+    config:
+      label_names:
+      - future_waypoints
+      output_names:
+      - multimodal_vae_posterior_future_waypoints
+      - multimodal_vae_posterior_future_waypoints_covar
+      - posterior_mu
+      - posterior_tril
+      - prior_mu
+      - prior_tril
+      - prior_components_weights
+      - posterior_components_weights
+      - multimodal_vae_prior_future_waypoints
+      - multimodal_vae_prior_future_waypoints_covar
+      beta: 1.
+      reconst_loss_weight: .1
+  name: vae_loss_gmm_covar_prior
+  weight: 1

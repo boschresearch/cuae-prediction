@@ -1,0 +1,11 @@
+waypoints_from_encoding:
+  loss_function:
+    path_to_class: learning.loss.MultimodalWTALoss
+    config:
+      loss_func_config:
+        path_to_class: learning.loss.L1LossSmoothWaypoints
+        config:
+          output_label_key: future_waypoints
+          output_key: multimodal_waypoints_from_encoding
+  name: waypoints_from_encoding
+  weight: 1

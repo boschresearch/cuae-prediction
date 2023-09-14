@@ -1,0 +1,25 @@
+outputs:
+  - key: multimodal_vae_prior_future_waypoints
+    name: multimodal_prior_waypoints_output
+    shape: INFER
+  - key: multimodal_vae_posterior_future_waypoints
+    name: multimodal_posterior_waypoints_output
+    shape: INFER
+  - key: multimodal_vae_prior_future_waypoints_std
+    name: multimodal_prior_waypoints_std_output
+    shape: INFER
+  - key: multimodal_vae_posterior_future_waypoints_std
+    name: multimodal_posterior_waypoints_std_output
+    shape: INFER
+  - key: posterior_mu
+    name: posterior_mu_output
+    shape: INFER
+  - key: posterior_tril
+    name: posterior_tril_output
+    shape: INFER
+  - key: prior_mu
+    name: prior_mu_output
+    shape: INFER
+  - key: prior_tril
+    name: prior_tril_output
+    shape: INFER

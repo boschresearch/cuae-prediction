@@ -1,0 +1,10 @@
+path_to_class: learning.data_curator.DataCurator
+config:
+  batch_size: 64
+  dataset_paths:
+    - path: ???
+  datasets_root: ''
+  num_dataloader_workers: 8
+  random_dev_subset: 1
+  random_train_subset: 1
+  sample_with_replacement: False

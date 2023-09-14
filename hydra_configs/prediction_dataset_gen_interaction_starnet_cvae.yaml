@@ -1,0 +1,15 @@
+# Dataset generation config used by script hydra_generate_dataset_from_config.py
+
+defaults:
+ - _self_
+ - custom_help: dataset_generation
+ - dataset_config: interaction
+ - features_labels_generator_config: interaction_starnet_cvae_features
+ - override hydra/job_logging: disabled
+
+hydra:
+  run:
+    dir: ${dataset_config.config.dataset_path_out}
+  output_subdir: hydra
+  searchpath:
+    - pkg://hydra_configs

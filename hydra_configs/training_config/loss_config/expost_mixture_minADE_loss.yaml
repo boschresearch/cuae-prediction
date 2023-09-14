@@ -1,0 +1,16 @@
+mixture_minADE_loss:
+  loss_function:
+    path_to_class: learning.loss.DualMultimodalityAdapter
+    config:
+      label_names:
+      - future_waypoints
+      output_names:
+      - multimodal_vae_mixture_future_waypoints
+      loss_func_config:
+        path_to_class: learning.loss.MinADELoss
+        config:
+          order: 2
+          output_label_key: future_waypoints
+          output_key: multimodal_vae_mixture_future_waypoints
+  name: mixture_minADE_loss
+  weight: 1

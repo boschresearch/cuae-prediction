@@ -1,0 +1,7 @@
+interaction_future_actions_features:
+  path_to_class: features_and_labels.features_generators.FutureActionsFeaturesGenerator
+  config:
+    num_frames: 30
+    stride: 1
+    data_frequency: 10.0
+    output_name: future_actions_features

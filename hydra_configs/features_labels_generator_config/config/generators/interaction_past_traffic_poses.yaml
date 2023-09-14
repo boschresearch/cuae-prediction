@@ -1,0 +1,8 @@
+interaction_past_traffic_poses:
+  path_to_class: features_and_labels.labels_generators.PastTrafficPosesLabelsGenerator
+  config:
+    additional_parameters:
+      max_distance_to_ego: 100
+      num_frames: 10
+      stride: 1
+    output_name: past_traffic_poses

@@ -1,0 +1,12 @@
+expost_mixture_NLL_at2s:
+  loss_function:
+    path_to_class: learning.loss.MixtureNLLAtTimestep
+    config:
+      label_key: future_waypoints
+      output_mean_key: multimodal_vae_mixture_future_waypoints
+      output_std_key: multimodal_vae_mixture_future_waypoints_std
+      output_weights_key: multimodal_vae_mixture_weights
+      normal_dist_std: regressed_std
+      ratio: 0.66
+  name: mixture_NLL_at2s
+  weight: 1

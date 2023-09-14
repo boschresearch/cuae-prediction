@@ -1,0 +1,35 @@
+defaults:
+  - policy_training_wrapper_config: prediction_wrapper
+  - data_curator_config: prediction
+  - loss_config:
+    - vae_loss
+  - loss_config@additional_dev_loss_config:
+    - posterior_minADE_loss
+    - posterior_minFDE_loss
+    - prior_minADE_loss
+    - prior_minFDE_loss
+    - prior_multimodal_spread
+    - NLL_configs/mean_NLL_at3s_setstd1
+    - NLL_configs/mean_NLL_at2s_setstd1
+    - NLL_configs/mean_NLL_at1s_setstd1
+    - NLL_configs/wta_NLL_at3s_setstd1
+    - NLL_configs/wta_NLL_at2s_setstd1
+    - NLL_configs/wta_NLL_at1s_setstd1
+
+additional_train_loss_config: null
+clip_grad_norm_to: 1.0
+epochs: 30
+evaluate_dev_loss_every_nth_epoch: 1
+experiment_name: Debug
+learning_rate: 0.0001
+learning_rate_scheduler:
+  path_to_class: torch.optim.lr_scheduler.MultiStepLR
+  config:
+    gamma: 0.5
+    milestones: [9, 14, 19, 24]
+    verbose: true
+mlflow_directory: ???
+mlflow_run_name: '-'
+policy_directory: ???
+use_gpu: true
+weight_decay: 0.0

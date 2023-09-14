@@ -1,0 +1,26 @@
+# Training config used by script hydra_train_from_config.py
+
+defaults:
+ - _self_
+ - custom_help: training
+ - policy_config: prediction_utcvae_expost
+ - training_config: prediction_utcvae_expost
+ - policy_config/prediction_encoder_config: starnet_encoder
+ - training_config/prediction_policy_wrapper_input_config: starnet_cvae_input
+ - training_config/prediction_policy_wrapper_output_config: cvae_expost_mixture_output
+ - override hydra/job_logging: disabled
+
+dataset_info: ${training_config.data_curator_config.config.datasets_root}/${training_config.data_curator_config.config.dataset_paths.0.path}/meta.json
+
+cvae_base_model: starnet
+
+# a hacky parameter that switches on complex config handling
+# which shall be removed once diff-sim and prediction configs are fixed hydra-style
+requires_legacy_config_handling: true
+
+hydra:
+  run:
+    dir: ${training_config.policy_directory}
+  output_subdir: hydra
+  searchpath:
+    - pkg://hydra_configs

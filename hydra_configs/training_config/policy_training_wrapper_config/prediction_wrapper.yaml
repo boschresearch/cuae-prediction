@@ -1,0 +1,14 @@
+path_to_class: learning.policy_training_wrappers.PolicyTrainingWrapper
+config:
+  data_curator_config: ${training_config.data_curator_config}
+  policy_config: ${policy_config}
+  loss_config: ${training_config.loss_config}
+  additional_dev_loss_config: ${training_config.additional_dev_loss_config}
+  additional_train_loss_config: ${training_config.additional_train_loss_config}
+  use_gpu: ${training_config.use_gpu}
+  params_from_dataset:
+    data_source: INFER
+    inputs: ${training_config.prediction_policy_wrapper_input_config.inputs}
+    inputs_sample_times: INFER
+    outputs: ${training_config.prediction_policy_wrapper_output_config.outputs}
+    outputs_sample_times: INFER

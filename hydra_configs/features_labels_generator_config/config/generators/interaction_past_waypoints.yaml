@@ -1,0 +1,7 @@
+interaction_past_waypoints:
+  path_to_class: features_and_labels.labels_generators.PastWaypointsLabelsGenerator
+  config:
+    additional_parameters:
+      num_frames: 10
+      stride: 1
+    output_name: past_waypoints

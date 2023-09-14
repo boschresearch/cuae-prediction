@@ -1,0 +1,34 @@
+defaults:
+  - policy_training_wrapper_config: prediction_wrapper
+  - data_curator_config: prediction
+  - loss_config:
+    - utvae_loss
+  - loss_config@additional_dev_loss_config:
+    - posterior_minADE_loss
+    - posterior_minFDE_loss
+    - prior_minADE_loss
+    - prior_minFDE_loss
+    - expost_mixture_multimodal_spread
+    - expost_mixture_minADE_loss
+    - expost_mixture_minFDE_loss
+    - NLL_configs/expost_mixture_NLL_at3s
+    - NLL_configs/expost_mixture_NLL_at2s
+    - NLL_configs/expost_mixture_NLL_at1s
+
+additional_train_loss_config: null
+clip_grad_norm_to: 1.0
+epochs: 30
+evaluate_dev_loss_every_nth_epoch: 1
+experiment_name: Debug
+learning_rate: 0.0001
+learning_rate_scheduler:
+  path_to_class: torch.optim.lr_scheduler.MultiStepLR
+  config:
+    milestones: [9, 14, 19, 24]
+    gamma: 0.5
+    verbose: True
+mlflow_directory: ???
+mlflow_run_name: '-'
+policy_directory: ???
+use_gpu: true
+weight_decay: 0.0

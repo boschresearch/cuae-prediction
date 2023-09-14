@@ -1,0 +1,22 @@
+mixture_multimodal_spread:
+  loss_function:
+    path_to_class: learning.loss.DualMultimodalityAdapter
+    config:
+      label_names:
+      - future_waypoints
+      output_names:
+      - multimodal_vae_mixture_future_waypoints
+      loss_func_config:
+        path_to_class: learning.loss.MultimodalTrajectorySpread
+        config:
+          label_names:
+          - future_waypoints
+          output_names:
+          - multimodal_vae_mixture_future_waypoints
+          loss_func_config:
+            path_to_class: learning.loss.FDELoss
+            config:
+              output_key: multimodal_vae_mixture_future_waypoints
+              output_label_key: future_waypoints
+              order: 2
+  name: mixture_multimodal_spread

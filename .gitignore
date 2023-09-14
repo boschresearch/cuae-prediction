@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+.logs/
+logs/
+__pycache__
+*.egg-info
+*.pyc
+*.pytest_cache
+test/unit/assets
+doc/html/
+*~
+site/
+mlruns
+*coverage.xml
+.coverage

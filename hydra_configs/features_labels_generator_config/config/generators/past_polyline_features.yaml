@@ -1,0 +1,6 @@
+past_polyline_features:
+  path_to_class: features_and_labels.features_generators.MapPolylineVectorFeaturesGenerator
+  config:
+    max_distance_to_ego: 50.0
+    ref_frame: local
+    output_name: past_polyline_features

@@ -1,0 +1,13 @@
+prior_mixture_NLL_at2s:
+  loss_function:
+    path_to_class: learning.loss.VAEMixtureCovarNLLLoss
+    config:
+      output_names:
+        - multimodal_vae_prior_future_waypoints
+        - multimodal_vae_prior_future_waypoints_covar
+        - prior_components_weights
+      label_names:
+        - future_waypoints
+      timestamp_ratio: 0.66
+  name: prior_mixture_NLL_at2s
+  weight: 1

@@ -1,0 +1,37 @@
+path_to_class: learning.prediction_models.action_space_models.feed_forward_models.StarNetFeedForwardActionSpacePredictor
+path_to_state_dict: null
+config:
+  data_source: INFER FROM TRAINING WRAPPER
+  inputs: INFER FROM TRAINING WRAPPER
+  inputs_sample_times: INFER FROM TRAINING WRAPPER
+  num_modes: 6
+  outputs: INFER FROM TRAINING WRAPPER
+  outputs_sample_times: INFER FROM TRAINING WRAPPER
+  submodel_configs:
+    actions_encoder:
+      config:
+        scales:
+          - 1.9
+          - 1.9
+        feat_dim: 128
+        num_input_channels: 2
+      path_to_class: learning.prediction_models.encoders.TempCNNEncoder
+    actions_predictor:
+      config:
+        gru_params:
+          hidden_dim: 256
+          input_dim: 256
+          num_layers: 2
+          num_loops: 3
+        input_lin_layers:
+        - activation: torch.nn.Tanh
+          dim: 512
+          norm: torch.nn.LayerNorm
+        - activation: torch.nn.Tanh
+          dim: 256
+          norm: torch.nn.LayerNorm
+      path_to_class: learning.prediction_models.heads.GRUActionHead
+    context_encoder: ${policy_config.prediction_encoder_config}
+    kinematic_model:
+      config: {}
+      path_to_class: lib.kinematic_models.KinematicBicycleModel

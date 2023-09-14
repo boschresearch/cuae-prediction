@@ -1,0 +1,29 @@
+setuptools
+packaging
+hydra-core
+dacite
+gym
+h5py
+pathos
+pyproj
+
+-f https://download.pytorch.org/whl/torch/
+-f https://data.pyg.org/whl/torch-1.12.0+cu116.html
+torch==1.12.0+cu116
+torchvision==0.13.0
+pyg-lib==0.3.0+pt112cu116
+torch-sparse==0.6.16
+torch-cluster==1.6.0
+torch-spline-conv==1.2.1
+torch-geometric==2.3.1
+torch-scatter==2.1.0
+
+mlflow
+pytorch-lightning==1.9.5
+tensordict==0.1.0
+pycave==3.2.1
+ray
+
+pytest
+black
+pre-commit

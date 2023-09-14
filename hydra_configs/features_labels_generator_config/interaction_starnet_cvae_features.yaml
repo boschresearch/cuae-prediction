@@ -1,0 +1,11 @@
+defaults:
+ - config/generators:
+   - past_polyline_features
+   - past_ego_state_features
+   - interaction_past_actions_features
+   - interaction_future_actions_features
+   - interaction_past_traffic_poses
+   - interaction_future_waypoints
+   - interaction_past_waypoints
+
+path_to_class: features_and_labels.generators_base.MultiOutputGenerator

@@ -1,0 +1,16 @@
+help_string: |-
+ Run training from a configuration file.
+
+ Required overrides:
+ - training_config.policy_directory
+   The directory where the trained policy is stored.
+ - training_config.mlflow_directory
+   The logging directory for mlflow.
+
+ Suggested overrides:
+ - training_config.data_curator_config.config.datasets_root = ${training_config.data_curator_config.config.datasets_root}
+   Root folder relative to which dataset paths are defined.
+ - training_config.data_curator_config.config.dataset_paths
+   List of dataset directories relative to root folder, e.g. '[{path: <path>, sampling_weight: 1.0}]'
+ - training_config.mlflow_run_name
+   Name of mlflow run. If not provided, the name is extracted from training_config.policy_directory.
